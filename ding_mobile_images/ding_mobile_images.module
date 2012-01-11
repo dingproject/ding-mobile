@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * Implementation of hook_views_default_views_alter().
+ *
+ * Replaces field_list_image with field_mobile_image in ding_mobile
+ * views.
+ */
+function ding_mobile_images_views_default_views_alter(&$views) {
+  if ($views['mobile_articles']) {
+    _ding_mobile_images_replace_field($views['mobile_articles'], 'field_list_image', 'field_mobile_image');
+  }
+  if ($views['mobile_events']) {
+    _ding_mobile_images_replace_field($views['mobile_events'], 'field_list_image', 'field_mobile_image');
+  }
+}
+
+/**
+ * Helper function to replace an file field in a view.
+ */
+function _ding_mobile_images_replace_field($view, $from_field, $to_field) {
+  // The field settings that needs to be changed.
+  static $setting_fields = array(
+    'id',
+    'table',
+    'field'
+  );
+  foreach ($view->display as $display_name => $display) {
+    foreach ($display->display_options['fields'] as $name => $settings) {
+      if ($name == ($from_field . '_fid')) {
+        foreach ($setting_fields as $settings_field) {
+          $settings[$settings_field] = preg_replace('/' . $from_field . '/', $to_field, $settings[$settings_field]);
+        }
+        $view->display[$display_name]->display_options['fields'][$to_field . '_fid'] = $settings;
+        unset($view->display[$display_name]->display_options['fields'][$from_field . '_fid']);
+      }
+    }
+  }
+}

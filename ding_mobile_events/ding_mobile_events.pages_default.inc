@@ -5,7 +5,6 @@
  */
 function ding_mobile_events_default_page_manager_handlers() {
   $export = array();
-  
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
@@ -139,6 +138,5 @@ function ding_mobile_events_default_page_manager_handlers() {
   $handler->conf['display'] = $display;
 
   $export['mobile_page_events_overview_panel_context'] = $handler;
-
   return $export;
 }

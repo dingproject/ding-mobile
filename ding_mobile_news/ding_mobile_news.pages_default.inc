@@ -5,7 +5,6 @@
  */
 function ding_mobile_news_default_page_manager_handlers() {
   $export = array();
-  
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
@@ -138,6 +137,5 @@ function ding_mobile_news_default_page_manager_handlers() {
   $handler->conf['display'] = $display;
 
   $export['mobile_page_article_list_panel_context'] = $handler;
-
   return $export;
 }

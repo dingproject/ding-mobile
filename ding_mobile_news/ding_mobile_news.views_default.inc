@@ -142,7 +142,7 @@ function ding_mobile_news_views_default_views() {
       'empty_zero' => 0,
       'link_to_node' => 0,
       'label_type' => 'none',
-      'format' => 'image_nodelink',
+      'format' => 'mobile-list-image_linked',
       'multiple' => array(
         'group' => TRUE,
         'multiple_number' => '',

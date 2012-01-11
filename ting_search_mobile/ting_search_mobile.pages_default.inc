@@ -5,7 +5,7 @@
  */
 function ting_search_mobile_default_page_manager_handlers() {
   $export = array();
-  
+
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
@@ -70,9 +70,9 @@ function ting_search_mobile_default_page_manager_handlers() {
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
-  
-  $export['mobile_page_search_results_panel_context'] = $handler; 
-    
+
+  $export['mobile_page_search_results_panel_context'] = $handler;
+
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
@@ -175,10 +175,10 @@ function ting_search_mobile_default_page_manager_handlers() {
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
-    
-  
+
+
   $export['mobile_page_ting_object_view_panel_context'] = $handler;
-  
+
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
@@ -290,129 +290,6 @@ function ting_search_mobile_default_page_manager_handlers() {
   $handler->conf['display'] = $display;
 
   $export['mobile_page_ting_collection_view_panel_context'] = $handler;
-
-  $handler = new stdClass;
-  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
-  $handler->api_version = 1;
-  $handler->name = 'mobile_page_user_library_status_panel_context';
-  $handler->task = 'page';
-  $handler->subtask = 'user_library_status';
-  $handler->handler = 'panel_context';
-  $handler->weight = -30;
-  $handler->conf = array(
-    'title' => 'Mobile',
-    'no_blocks' => 0,
-    'css_id' => '',
-    'css' => '',
-    'contexts' => array(),
-    'relationships' => array(),
-    'pipeline' => 'standard',
-    'access' => array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'php',
-          'settings' => array(
-            'description' => '',
-            'php' => 'if (function_exists(\'mobile_tools_site_type\')) {
-  if (mobile_tools_site_type() == \'mobile\') {
-    return true;
-  }
-}
-return false;',
-          ),
-          'not' => FALSE,
-        ),
-      ),
-    ),
-  );
-  $display = new panels_display;
-  $display->layout = 'onecol';
-  $display->layout_settings = array();
-  $display->panel_settings = array(
-    'style_settings' => array(
-      'default' => NULL,
-      'top' => NULL,
-      'left' => NULL,
-      'right' => NULL,
-      'bottom' => NULL,
-      'middle' => NULL,
-    ),
-  );
-  $display->cache = array();
-  $display->title = '';
-  $display->content = array();
-  $display->panels = array();
-    $pane = new stdClass;
-    $pane->pid = 'new-1';
-    $pane->panel = 'middle';
-    $pane->type = 'debt_list';
-    $pane->subtype = 'ding_debt_notice';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_uid_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-1'] = $pane;
-    $display->panels['middle'][0] = 'new-1';
-    $pane = new stdClass;
-    $pane->pid = 'new-2';
-    $pane->panel = 'middle';
-    $pane->type = 'profile';
-    $pane->subtype = 'ding_library_user_loan_list_form';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_uid_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-2'] = $pane;
-    $display->panels['middle'][1] = 'new-2';
-    $pane = new stdClass;
-    $pane->pid = 'new-3';
-    $pane->panel = 'middle';
-    $pane->type = 'reservation_list';
-    $pane->subtype = 'ding_reservation_list_form';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_uid_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => 'reservation',
-      'css_class' => '',
-    );
-    $pane->extras = array();
-    $pane->position = 2;
-    $display->content['new-3'] = $pane;
-    $display->panels['middle'][2] = 'new-3';
-  $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-2';
-  $handler->conf['display'] = $display;
-
-  $export['mobile_page_user_library_status_panel_context'] = $handler;
 
   return $export;
 }
