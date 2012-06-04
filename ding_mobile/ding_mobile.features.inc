@@ -35,12 +35,3 @@ function ding_mobile_ctools_plugin_api() {
     return array("version" => 1);
   }
 }
-
-/**
- * Implementation of hook_views_api().
- */
-function ding_mobile_views_api() {
-  return array(
-    'api' => '2',
-  );
-}

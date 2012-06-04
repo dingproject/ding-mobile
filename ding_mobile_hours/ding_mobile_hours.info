@@ -1,0 +1,4 @@
+name = "Ding! Mobile Events"
+package = "Ding! Mobile"
+core =  "6.x"
+dependencies[] = opening_hours

@@ -1,0 +1,36 @@
+<?php
+/**
+ * @file
+ * Provides a separate page with opening hours for mobile browsers.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function ding_mobile_hours_menu() {
+  $items = array();
+
+  // TODO: Custom menu paths shoudld not be danish words. Keeping it for
+  // backwards compatibility. Consider making a URL alias instead.
+  $items['aabningstider'] = array(
+    'title' => 'Opening hours',
+    'page callback' => 'ding_mobile_hours_page',
+    'access arguments' => array('access content'),
+    'file' => 'ding_mobile_hours.pages.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ding_mobile_hours_theme($existing, $type, $theme, $path) {
+  return array(
+    'ding_mobile_hours_list' => array(
+      'arguments' => array('libraries' => NULL),
+      'path' => $path . '/templates',
+      'template' => 'ding_mobile_hours_list',
+    ),
+  );
+}
