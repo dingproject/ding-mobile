@@ -93,7 +93,7 @@ function ding_mobile_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'mobile_tools_redirect_exceptions';
-  $strongarm->value = '';
+  $strongarm->value = 'payment/dibs/callbackok/*';
 
   $export['mobile_tools_redirect_exceptions'] = $strongarm;
   $strongarm = new stdClass;
