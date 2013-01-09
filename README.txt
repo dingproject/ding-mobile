@@ -28,6 +28,24 @@ status overridden. If you need to recreate any of these features, you
 have to manually ensure that these variants don't get into the wrong
 features.
 
+Setting cookie domain
+---------------------
+If using automatic redirection of mobile users, the site might get
+caught in a redirect loop when using links to the desktop version on
+mobile devices. In that case, you need to ensure that both versions
+share the same cookie domain.
+
+This requires that both versions is part of the same second level
+domain, as browsers will only allow setting the cookie for a parent
+domain if the host is part of the domain. However this shouldn't be a
+problem as the recommended setup puts the mobile site under the main
+domain.
+
+For example if the library's main domain is ding.dk, with www.ding.dk
+and ding.dk being the desktop version and m.ding.dk being the mobile,
+setting $cookie_domain = 'ding.dk' in settings.php should ensure that
+redirection works.
+
 Configuration
 -------------
 First go into mobile tools (admin/settings/mobile-tools) and set which
@@ -56,3 +74,8 @@ A: Go into admin/build/pages/edit/page-front_panel select Content tab
 
 Q: Search is not working?
 A: Make sure that ting_search_mobile module have be enabled.
+
+Q: Getting redirection hell when trying to change between mobile and
+   desktop?
+A: Ensure that both version have same cookie domain by setting it in
+   settings.php
